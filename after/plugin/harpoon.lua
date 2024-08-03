@@ -1,0 +1,26 @@
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+
+vim.keymap.set("n", "<leader>a", function()
+	local file_name = string.gsub(vim.api.nvim_buf_get_name(0), vim.loop.cwd(), '')
+	print(string.format("Added %s to Harpoon!", file_name))
+	mark.add_file()
+end)
+vim.keymap.set("n", "<leader>i", ui.toggle_quick_menu)
+
+vim.keymap.set("n", "<leader><leader>", function() 
+	print("Jumping to Anchor!")
+	ui.nav_file(1)
+end)
+vim.keymap.set("n", "<leader>p1", function() ui.nav_file(1) end)
+vim.keymap.set("n", "<leader>p2", function() ui.nav_file(2) end)
+vim.keymap.set("n", "<leader>p3", function() ui.nav_file(3) end)
+vim.keymap.set("n", "<leader>p4", function() ui.nav_file(4) end)
+vim.keymap.set("n", "<leader>p5", function() ui.nav_file(5) end)
+vim.keymap.set("n", "<leader>p6", function() ui.nav_file(6) end)
+
+-- vim.keymap.set("n", "<C-h>", function() ui.nav_file(1) end)
+
+-- vim.keymap.set("n", "<C-t>", function() ui.nav_file(2) end)
+-- vim.keymap.set("n", "<C-n>", function() ui.nav_file(3) end)
+-- vim.keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
